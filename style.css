@@ -1,0 +1,395 @@
+/* --- Variables de Color (Dark Mode) --- */
+:root {
+    --bg-dark-primary: #222831;   /* Fondo principal */
+    --bg-dark-secondary: #393E46; /* Fondo de tarjetas */
+    --accent-color: #00ADB5;     /* Turquesa brillante */
+    --text-light: #EEEEEE;       /* Texto principal */
+    --text-muted: #999;          /* Texto secundario (Problema: Contraste bajo) */
+    --border-color: #444;        /* Bordes sutiles */
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+/* --- Estilos Generales --- */
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark-primary);
+    color: var(--text-light);
+}
+
+main {
+    padding: 0; /* Quitamos el padding para la sección Hero */
+    min-height: 60vh;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--text-light);
+    letter-spacing: 1px; /* Añade "aire" a los títulos */
+}
+
+/* --- Header y Navegación --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: rgba(34, 40, 49, 0.9); /* Fondo semi-transparente */
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(5px); /* Efecto "frost" */
+    
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 1.8em;
+    color: var(--accent-color); /* Acento en el logo */
+    margin: 0;
+}
+
+nav a {
+    margin: 0 12px;
+    text-decoration: none;
+    font-size: 24px;
+    color: var(--text-muted); /* Problema: Contraste bajo */
+    cursor: pointer;
+    padding-bottom: 5px;
+    transition: color 0.2s, transform 0.2s;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+nav a.active {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+/* SOLUCIÓN: Añade un indicador de foco visible y personalizado */
+nav a:focus,
+button:focus,
+input:focus,
+.close-button:focus {
+    
+    /* Añadimos un reemplazo visual */
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Botón del Carrito */
+#cart-button {
+    background: linear-gradient(45deg, var(--accent-color), #00c9d4);
+    color: var(--bg-dark-primary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 173, 181, 0.4);
+}
+#cart-button:hover {
+    transform: scale(1.05);
+}
+#cart-button span {
+    background-color: var(--text-light);
+    border-radius: 50%;
+    padding: 2px 7px;
+    margin-left: 5px;
+    color: var(--primary-color);
+    font-size: 0.9em;
+}
+
+/* --- Sección Hero (Nueva) --- */
+#hero {
+    height: 60vh;
+    background-image: url('hero-background.png'); /* ASEGÚRATE DE TENER ESTA IMAGEN */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto Parallax */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+/* Overlay oscuro para legibilidad */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Problema: Contraste texto/imagen */
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+#hero h2 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+#hero p {
+    font-size: 1.2em;
+    color: var(--text-light);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* --- Productos --- */
+#products {
+    padding: 40px 20px; /* Padding para la sección de productos */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+#products h3 {
+    font-size: 1.8em;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    border-radius: 8px;
+    padding: 0; /* Quitamos padding, la imagen irá al borde */
+    text-align: center;
+    background-color: var(--bg-dark-secondary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden; /* Para que la imagen se ajuste a las esquinas */
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 250px; /* Altura fija para las imágenes */
+    width: 100%;
+    object-fit: cover; /* Recorta la imagen para rellenar */
+    margin: 0;
+}
+
+/* Contenedor para el texto de la tarjeta */
+.product-card-content {
+    padding: 20px;
+}
+
+.product-card h4 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: var(--text-light);
+}
+.product-card p {
+    font-size: 0.95em;
+    min-height: 40px;
+    color: var(--text-muted); /* Problema: Contraste */
+}
+.product-card span {
+    display: block;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin: 15px 0;
+}
+
+button.add-cart {
+    background: linear-gradient(45deg, var(--accent-color), #00c9d4);
+    color: var(--bg-dark-primary);
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: bold;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-size: 0.9em;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 173, 181, 0.4);
+}
+button.add-cart:hover {
+    transform: scale(1.05);
+}
+
+/* --- Footer --- */
+footer {
+    margin-top: 40px;
+    padding: 30px 20px;
+    background-color: var(--bg-dark-secondary);
+    text-align: center;
+    color: var(--text-muted); /* Problema: Contraste */
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+}
+
+/* --- Estilos del Modal (Modo Oscuro) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo más oscuro */
+    backdrop-filter: blur(5px);
+}
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background-color: var(--bg-dark-secondary);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    animation: fadeIn 0.3s;
+}
+
+.close-button {
+    color: var(--text-muted); /* Problema: Contraste */
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close-button:hover,
+.close-button:focus {
+    color: var(--text-light);
+}
+
+.cart-item-name { flex-grow: 1; color: var(--text-light); }
+.cart-item-controls .cart-quantity { color: var(--text-light); }
+.cart-item-price { color: var(--text-light); font-weight: bold; }
+
+/* Controles del carrito */
+.cart-item-controls {
+    background-color: var(--bg-dark-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+}
+.cart-item-controls button {
+    color: var(--accent-color);
+}
+#cart-items-list .cart-item {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cart-total {
+    color: var(--text-light);
+    border-top: 1px dashed var(--border-color);
+    padding-top: 15px;
+}
+
+/* Botón Checkout */
+.checkout-btn {
+    background: linear-gradient(45deg, var(--accent-color), #00c9d4);
+    color: var(--bg-dark-primary);
+    box-shadow: 0 2px 5px rgba(0, 173, 181, 0.4);
+}
+.checkout-btn:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.02);
+}
+
+/* Formulario de Checkout */
+.checkout-total {
+    color: var(--text-light);
+    border-top: 1px dashed var(--border-color);
+    border-bottom: 1px dashed var(--border-color);
+}
+.form-group span {
+    color: var(--text-muted); /* Problema: Contraste */
+}
+.form-group input {
+    background-color: var(--bg-dark-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+}
+.form-group input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 5px rgba(0, 173, 181, 0.3);
+}
+.form-group input::placeholder {
+    color: #777; /* Problema: Contraste */
+}
+#back-to-cart-btn {
+    background-color: var(--bg-dark-secondary);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+}
+#back-to-cart-btn:hover {
+    background-color: var(--bg-dark-primary);
+}
+
+/* --- Páginas de Información (Modo Oscuro) --- */
+.info-section {
+    background-color: var(--bg-dark-secondary);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    max-width: 800px;
+    margin: 40px auto; /* Añadido margen */
+}
+.info-section h3 {
+    color: var(--accent-color);
+}
+.hours-list p b {
+    color: var(--text-light);
+}
+.hours-list p {
+    border-bottom: 1px dashed var(--border-color);
+}
+.card-icons span {
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    background-color: var(--bg-dark-primary);
+}
+
+/* Tabla (Modo Oscuro) */
+.shipping-table th,
+.shipping-table td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+}
+.shipping-table th {
+    background-color: var(--bg-dark-primary);
+    color: var(--text-light);
+}
+.shipping-table tr:nth-child(even) {
+    background-color: #3f464f; /* Fondo de fila alterno */
+}

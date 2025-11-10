@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Tienda Ficticia - SPA</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>Tienda Ficticia</h1>
+        <nav>
+            <a href="#inicio" class="nav-link" data-view="view-inicio" 
+               title="Inicio" aria-label="Inicio">🏠</a>
+            <a href="#info" class="nav-link" data-view="view-info" 
+               title="Información" aria-label="Información">ℹ️</a>
+            <a href="#mapa" class="nav-link" data-view="view-mapa" 
+               title="Mapa" aria-label="Mapa">🗺️</a>
+            <a href="#pagos" class="nav-link" data-view="view-pagos" 
+               title="Pagos y Envíos" aria-label="Pagos y Envíos">💳</a>
+            <a href="#carrito" id="cart-button"
+               title="Ver Carrito" aria-label="Ver Carrito">🛒 <span id="cart-count">0</span></a>
+        </nav>
+    </header>
+
+    <main id="app">
+        </main>
+
+    <footer>
+        <div class="info">
+            <p><strong>Dirección:</strong> Calle Falsa 123</p>
+            <p><strong>Teléfono:</strong> 555-1234</p>
+        </div>
+    </footer>
+
+    <template id="view-inicio">
+        <section id="hero">
+            <div class="hero-content">
+                <h2>EQUIPA TU AVENTURA</h2>
+                <p>Descubre el mejor material de montaña seleccionado por expertos.</p>
+            </div>
+        </section>
+    
+        <section id="products">
+            <h3>Nuestros Productos</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="imagen-bota.png" alt="producto">
+                    <h4>Botas de Montaña</h4>
+                    <p>Botas de cuero robustas, perfectas para cualquier terreno.</p>
+                    <span>99.99€</span>
+                    <button class="add-cart" data-id="1" data-name="Botas de Montaña" data-price="99.99">Añadir al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagen-tienda.png" alt="producto">
+                    <h4>Tienda de Campaña</h4>
+                    <p>Tienda tipo domo para 2 personas, ligera y resistente al viento.</p>
+                    <span>149.99€</span>
+                    <button class="add-cart" data-id="2" data-name="Tienda de Campaña" data-price="149.99">Añadir al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagen-mochila.png" alt="producto">
+                    <h4>Mochila Técnica</h4>
+                    <p>Mochila de 40L con soporte lumbar ergonómico.</p>
+                    <span>79.99€</span>
+                    <button class="add-cart" data-id="3" data-name="Mochila Técnica" data-price="79.99">Añadir al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="imagen-botella.png" alt="producto"> 
+                    <div class="product-card-content">
+                        <h4>Botella Térmica 1L</h4>
+                        <p>Acero inoxidable, mantiene tu bebida fría 24h o caliente 12h.</p>
+                        <span>29.99€</span>
+                        <button class="add-cart" data-id="4" data-name="Botella Térmica 1L" data-price="29.99">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="imagen-linterna.png" alt="producto">
+                    <div class="product-card-content">
+                        <h4>Linterna Frontal LED</h4>
+                        <p>500 lúmenes de potencia, resistente al agua y 5 modos de luz.</p>
+                        <span>45.50€</span>
+                        <button class="add-cart" data-id="5" data-name="Linterna Frontal LED" data-price="45.50">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="imagen-bastones.png" alt="producto">
+                    <div class="product-card-content">
+                        <h4>Bastones de Trekking</h4>
+                        <p>Par de bastones de fibra de carbono, ultraligeros y plegables.</p>
+                        <span>69.99€</span>
+                        <button class="add-cart" data-id="6" data-name="Bastones de Trekking" data-price="69.99">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="view-info">
+        <section id="store-info" class="info-section">
+            <h2>Sobre Nosotros</h2>
+            <p>Bienvenido a Tienda Ficticia, tu destino número uno para equipo de aventura y montaña. Fundada en 2024, nuestra misión es proveer solo el material de la más alta calidad para tus expediciones.</p>
+            
+            <h3>Nuestra Tienda</h3>
+            <p>
+                <strong>Dirección:</strong> Calle Falsa 123, 08001, AventuraCity<br>
+                <strong>Teléfono:</strong> 555-1234
+            </p>
+    
+            <h3>Horario de Apertura</h3>
+            <div class="hours-list">
+                <p><strong>Lunes a Viernes:</strong> 9:00 - 20:00</p>
+                <p><strong>Sábados:</strong> 10:00 - 18:00</p>
+                <p><strong>Domingos:</strong> Cerrado</p>
+            </div>
+        </section>
+    </template>
+
+    <template id="view-mapa">
+        <section id="map-info">
+            <h2>Encuéntranos</h2>
+            <p>Estamos en Calle Falsa 123. ¡Visítanos!</p>
+            <div class="map-placeholder">
+                (Aquí iría un mapa incrustado)
+            </div>
+        </section>
+    </template>
+
+    <template id="view-pagos">
+        <section id="payment-info" class="info-section">
+            <h2>Métodos de Pago y Envío</h2>
+            
+            <h3>Tarjetas Aceptadas</h3>
+            <p>Aceptamos todas las principales tarjetas de crédito y débito.</p>
+            <div class="card-icons">
+                <span>VISA</span>
+                <span>MasterCard</span>
+                <span>AmEx</span>
+            </div>
+    
+            <h3>Pago Seguro</h3>
+            <p>Toda tu información de pago está encriptada y protegida. Utilizamos una pasarela de pago con certificación SSL para garantizar que tu compra sea 100% segura. Tus datos nunca son almacenados en nuestros servidores.</p>
+            
+            <h3>Opciones de Envío</h3>
+            <p>Ofrecemos las siguientes modalidades de envío para adaptarnos a tus necesidades:</p>
+            
+            <table class="shipping-table">
+                <tr>
+                    <th>Método de Envío</th>
+                    <th>Tiempo Estimado</th>
+                    <th>Coste</th>
+                </tr>
+                <tr>
+                    <td>Envío Estándar</td>
+                    <td>3-5 días hábiles</td>
+                    <td>4.99€ (Gratis en pedidos > 50€)</td>
+                </tr>
+                <tr>
+                    <td>Envío Express</td>
+                    <td>1-2 días hábiles</td>
+                    <td>9.99€</td>
+                </tr>
+                <tr>
+                    <td>Recogida en Tienda</td>
+                    <td>2 horas</td>
+                    <td>Gratis</td>
+                </tr>
+            </table>
+        </section>
+    </template>
+
+
+    <div id="cart-modal" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <span class="close-button" aria-label="Cerrar modal">&times;</span>
+    
+            <div id="cart-view">
+                <h2>Mi Carrito</h2>
+                <div id="cart-items-list">
+                    <p>El carrito está vacío.</p>
+                </div>
+                <p class="cart-total">Total: <span id="cart-total">0.00</span>€</p>
+                <button id="checkout-button" class="checkout-btn">Finalizar Compra</button>
+            </div>
+    
+            <div id="checkout-view" class="hidden">
+                <h2>Datos de Pago</h2>
+                <p class="checkout-total">Total a Pagar: <span id="checkout-total-amount">0.00</span>€</p>
+                
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card">Número de Tarjeta</label>
+                        <input type="text" id="card" placeholder="0000 0000 0000 0000" required>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="button" id="back-to-cart-btn">Volver al Carrito</button>
+                        <button type="submit" id="pay-button" class="checkout-btn">Pagar</button>
+                    </div>
+                </form>
+            </div>
+    
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
